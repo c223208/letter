@@ -2,7 +2,7 @@ body {
     margin: 0;
     overflow: hidden;
     background-color: #2c3e50; /* デスクトップ全体の背景色 */
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family: "DotGothic16", Arial, sans-serif;
     user-select: none; /* テキスト選択を防いでアプリっぽくする */
 }
 
