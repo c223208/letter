@@ -35,8 +35,7 @@ body {
    写真ウィンドウ（レイヤー上位）
    ============================ */
 .photo-window {
-    width: 240px;
-    height: 180px;
+    /* サイズは個別のクラスで指定 (.window-large, .window-medium, .window-small) */
     z-index: 10; /* メッセージより手前 */
     
     /* 仕掛け：背景画像を画面全体に対して固定する */
@@ -45,6 +44,16 @@ body {
     background-size: cover;
     background-attachment: fixed; 
     background-position: center;
+}
+
+.window-large {
+    width: 360px;
+    height: 270px;
+}
+
+.window-medium {
+    width: 240px;
+    height: 180px;
 }
 
 /* ============================
