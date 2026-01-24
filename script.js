@@ -54,29 +54,27 @@ function closeWindow(id) {
     }
 }
 
-// フォルダアイコン：閉じたウィンドウを復活させる
-function restoreWindows() {
-    const msgWindows = document.querySelectorAll('.message-window');
-    msgWindows.forEach(win => {
-        if (win.style.display === 'none') {
-            win.style.display = 'flex';
-            // ふわっと表示させるアニメーション
-            win.style.opacity = '0';
-            win.style.transform = 'scale(0.9)';
-            
-            // 少し待ってから不透明に戻す
-            requestAnimationFrame(() => {
-                win.style.transition = 'opacity 0.3s, transform 0.3s';
-                win.style.opacity = '1';
-                win.style.transform = 'scale(1)';
-            });
-            
-            // アニメーション設定が残らないように後始末
-            setTimeout(() => {
-                win.style.transition = '';
-            }, 300);
-        }
-    });
+// フォルダアイコン：指定したウィンドウを復活させる
+function restoreWindow(id) {
+    const targetWindow = document.getElementById(id);
+    if (targetWindow && targetWindow.style.display === 'none') {
+        targetWindow.style.display = 'flex';
+        // ふわっと表示させるアニメーション
+        targetWindow.style.opacity = '0';
+        targetWindow.style.transform = 'scale(0.9)';
+        
+        // 少し待ってから不透明に戻す
+        requestAnimationFrame(() => {
+            targetWindow.style.transition = 'opacity 0.3s, transform 0.3s';
+            targetWindow.style.opacity = '1';
+            targetWindow.style.transform = 'scale(1)';
+        });
+        
+        // アニメーション設定が残らないように後始末
+        setTimeout(() => {
+            targetWindow.style.transition = '';
+        }, 300);
+    }
 }
 
 // 緑ボタン：別ページへ移動する（詳細ページ）
