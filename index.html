@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Desktop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="desktop-icon" onclick="restoreWindows()">
+        <div class="icon-img">📁</div>
+        <div class="icon-label">Messages</div>
+    </div>
+
+    <div class="window photo-window" style="top: 50px; left: 50px;">
+        <div class="title-bar"></div>
+    </div>
+    
+    <div class="window photo-window" style="top: 50px; left: 320px;">
+        <div class="title-bar"></div>
+    </div>
+    
+    <div class="window photo-window" style="top: 250px; left: 100px;">
+        <div class="title-bar"></div>
+    </div>
+    
+    <div class="window photo-window" style="top: 250px; left: 400px;">
+        <div class="title-bar"></div>
+    </div>
+    
+    <div class="window photo-window" style="top: 100px; left: 600px;">
+        <div class="title-bar"></div>
+    </div>
+
+    <div class="window message-window" id="msg1" style="top: 400px; left: 150px;">
+        <div class="title-bar">
+            <button class="btn btn-link" onclick="goToPage()"></button>
+            <button class="btn btn-close" onclick="closeWindow('msg1')"></button>
+        </div>
+        <div class="content">
+            <p>管理者からのメッセージ<br>その１</p>
+        </div>
+    </div>
+
+    <div class="window message-window" id="msg2" style="top: 450px; left: 600px;">
+        <div class="title-bar">
+            <button class="btn btn-link" onclick="goToPage()"></button>
+            <button class="btn btn-close" onclick="closeWindow('msg2')"></button>
+        </div>
+        <div class="content">
+            <p>追加のメッセージ<br>（重要なお知らせ）</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
