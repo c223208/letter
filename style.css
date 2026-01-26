@@ -124,6 +124,7 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     background: #c0c0c0;
     white-space: nowrap;
     justify-content: flex-start;
+    flex-shrink: 0;
 }
 
 .start-icon {
@@ -139,6 +140,7 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     border-left: 1px solid #808080;
     border-right: 1px solid #fff;
     margin: 0 2px;
+    flex-shrink: 0;
 }
 
 .task-items {
@@ -146,6 +148,7 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     display: flex;
     padding-left: 2px;
     gap: 6px;
+    overflow: hidden; /* Prevent items from pushing out */
 }
 
 .task-button {
@@ -163,6 +166,16 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     text-overflow: ellipsis;
     border: 2px outset #fff;
     background: #c0c0c0;
+    flex-shrink: 1; /* Allow buttons to shrink */
+    min-width: 50px; /* But keep them somewhat clickable */
+}
+
+.task-button b {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1;
+    min-width: 0;
 }
 
 .tray {
@@ -174,9 +187,10 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     border-bottom: 1px solid #fff;
     background: #c0c0c0;
     padding: 0 12px;
-    height: 38px;
-    margin-right: 2px;
+    height: 30px;
+    margin-right: 0px;
     box-shadow: inset 1px 1px 0 #000;
+    flex-shrink: 0;
 }
 
 .clock { font-size: 15px; color: #000; }
