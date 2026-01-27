@@ -54,6 +54,7 @@ windows.forEach(win => {
 // Page Load Initialization
 window.addEventListener('load', () => {
     bootSequence();
+    initializeWindowEventDelegation();
     initializeTaskbar();
     initializeDesktopIcons();
 });

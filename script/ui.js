@@ -4,6 +4,32 @@
 let maxZIndex = 100;
 let activeWindowId = null;
 
+// Window Control Event Delegation
+function initializeWindowEventDelegation() {
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-action]');
+        if (!btn) return;
+
+        const action = btn.dataset.action;
+        const target = btn.dataset.target;
+
+        switch (action) {
+            case 'minimize':
+                minimizeWindow(target);
+                break;
+            case 'maximize':
+                maximizeWindow(target);
+                break;
+            case 'close':
+                closeWindow(target);
+                break;
+            case 'help':
+                goToPage();
+                break;
+        }
+    });
+}
+
 // Desktop Icons Initialization
 function initializeDesktopIcons() {
     const icons = document.querySelectorAll('.desktop-icon');
