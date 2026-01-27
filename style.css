@@ -200,26 +200,26 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
    ============================ */
 .desktop-icons-container {
     position: absolute;
-    top: 0;
+    top: 55px; /* 上の余白を元に戻す */
     left: 0;
-    padding: 40px 20px; 
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap; 
     align-content: flex-start;
-    gap: 10px; /* アイコン同士の隙間 */
+    gap: 15px;
     z-index: 1; 
-    height: calc(100vh - 42px); 
+    height: calc(100vh - 55px); /* タスクバーの高さ分を引かずに、コンテナを画面下まで伸ばすことで折り返しを防ぐ */
     box-sizing: border-box;
 }
 
 .desktop-icon {
-    width: 90px;
-    height: 105px; /* 縦に6個並ぶよう高さを調整 (100vh/6 程度を意識) */
+    width: 100px;
+    height: 80px;
     text-align: center;
     cursor: pointer;
     color: white;
-    padding: 5px;
+    padding: 2px; /* パディングを詰めてアイコンと文字を近づける */
     border: 1px solid transparent;
     display: flex;
     flex-direction: column;
@@ -233,16 +233,16 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
 }
 
 .icon-img {
-    width: 52px; /* アイコンを大きく */
-    height: 52px;
-    margin-bottom: 8px;
+    width: 50px; /* アイコンを大きく */
+    height: 50px;
+    margin-bottom: -2px; /* 画像下のマージンをなくしてテキストに近づける */
 }
 
 .icon-label {
-    font-size: 14px;
+    font-size: 18px;
     background-color: transparent;
-    padding: 2px 4px;
-    line-height: 1.2;
+    padding: 0 4px; /* 上下のパディングを0に */
+    line-height: 1.1; /* 行間を少し詰める */
     text-shadow: 1px 1px 1px #000;
     word-break: break-all;
     display: -webkit-box;
