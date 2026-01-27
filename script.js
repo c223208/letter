@@ -85,7 +85,48 @@ const bootSequence = async () => {
 window.addEventListener('load', () => {
     bootSequence();
     initializeTaskbar();
+    initializeDesktopIcons();
 });
+
+function initializeDesktopIcons() {
+    const icons = document.querySelectorAll('.desktop-icon');
+    
+    // Global deselect on background click
+    document.addEventListener('mousedown', (e) => {
+        if (!e.target.closest('.desktop-icon')) {
+            document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+        }
+    });
+
+    icons.forEach(icon => {
+        // Selection Logic
+        icon.addEventListener('mousedown', (e) => {
+            e.stopPropagation(); // Prevent global deselect
+            
+            // Deselect all others (Single select behavior)
+            // Note: Use document.querySelectorAll to ensure we catch all, even if variable 'icons' is stale (though here it's fine)
+            document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+            
+            icon.classList.add('selected');
+        });
+
+        // Open Logic
+        icon.addEventListener('dblclick', (e) => {
+            e.stopPropagation();
+            icon.classList.remove('selected'); // Auto deselect on open
+            const targetId = icon.getAttribute('data-target');
+            if (targetId) {
+                // If it's a window ID
+                if (document.getElementById(targetId)) {
+                    restoreWindow(targetId);
+                } else {
+                    // Fallback for icons without windows (just purely decorative or logs)
+                    console.log(`Open: ${targetId}`);
+                }
+            }
+        });
+    });
+}
 
 
 // Clock Logic
@@ -126,6 +167,10 @@ function initializeTaskbar() {
         if (win.style.display !== 'none') {
             addTaskbarItem(win.id);
         }
+
+        // Initial state: inactive
+        const titleBar = win.querySelector('.title-bar');
+        if (titleBar) titleBar.classList.add('inactive');
     });
 }
 
@@ -174,10 +219,20 @@ function focusWindow(id) {
     const targetWindow = document.getElementById(id);
     const taskBtn = document.getElementById(`task-btn-${id}`);
     
+    // Deactivate all windows first
+    document.querySelectorAll('.window').forEach(w => {
+        const tb = w.querySelector('.title-bar');
+        if (tb) tb.classList.add('inactive');
+    });
+
     if (targetWindow) {
         maxZIndex++;
         targetWindow.style.zIndex = maxZIndex;
         activeWindowId = id;
+        
+        // Activate current window
+        const currentTitleBar = targetWindow.querySelector('.title-bar');
+        if (currentTitleBar) currentTitleBar.classList.remove('inactive');
         
         // Update taskbar visual state
         document.querySelectorAll('.task-button').forEach(b => {

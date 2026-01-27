@@ -8,19 +8,21 @@ body {
     background-size: 2px 2px;
     background-position: 0 0;
 
-    font-family: 'DotGothic16', 'W95FA', 'Microsoft Sans Serif', sans-serif;
+    /* Authentic Windows 98 Font Stack */
+    font-family: 'W95FA', 'MS UI Gothic', 'MS Sans Serif', 'Segoe UI', sans-serif;
+    
+    /* Disable font smoothing for crisp pixel look */
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
-    image-rendering: pixelated;
+    font-smooth: never;
     
     user-select: none;
     height: 100vh;
 }
 
-/* Force DotGothic16 on all elements */
+/* Ensure font applies to all elements but allow specific overrides if needed */
 button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title-bar-text {
-    font-family: 'DotGothic16', sans-serif !important;
-    -webkit-font-smoothing: none;
+    font-family: inherit;
 }
 
 /* ============================
@@ -227,9 +229,14 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     justify-content: flex-start;
 }
 
-.desktop-icon:hover {
-    background-color: rgba(0, 0, 128, 0.5);
-    border: 1px dotted rgba(255, 255, 255, 0.7);
+.desktop-icon.selected .icon-label {
+    background-color: #000080;
+    color: #c0c0c0;
+    outline: 1px dotted #ffff00;
+}
+
+.desktop-icon.selected .icon-img {
+    filter: brightness(0.7) sepia(1) hue-rotate(200deg) saturate(2);
 }
 
 .icon-img {
@@ -243,7 +250,7 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     background-color: transparent;
     padding: 0 4px; /* 上下のパディングを0に */
     line-height: 1.1; /* 行間を少し詰める */
-    text-shadow: 1px 1px 1px #000;
+    /* text-shadow: 1px 1px 1px #000; Removed for authenticity */
     word-break: break-all;
     display: -webkit-box;
     -webkit-line-clamp: 2;
