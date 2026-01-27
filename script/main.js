@@ -21,34 +21,43 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // Window Dragging Logic
-const windows = document.querySelectorAll('.window');
+let isWindowDragging = false;
+let dragTargetWindow = null;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
 
-windows.forEach(win => {
-    const titleBar = win.querySelector('.title-bar');
-    let isDragging = false;
-    let offsetX, offsetY;
+document.addEventListener('mousedown', (e) => {
+    const titleBar = e.target.closest('.title-bar');
+    if (!titleBar) return;
+    
+    // タイトルバー内のボタン（閉じる等）をクリックした場合は無視
+    if (e.target.tagName === 'BUTTON') return;
 
-    titleBar.addEventListener('mousedown', (e) => {
-        if(e.target.tagName === 'BUTTON') return;
-        if(win.classList.contains('maximized')) return; // Prevent drag if maximized
+    const win = titleBar.closest('.window');
+    if (!win) return;
 
-        e.preventDefault(); // Prevent text selection and default drag behaviors
-        // focusWindow is handled by win.mousedown
-        isDragging = true;
-        const rect = win.getBoundingClientRect();
-        offsetX = e.clientX - rect.left;
-        offsetY = e.clientY - rect.top;
-    });
+    // 最大化されている場合はドラッグさせない
+    if (win.classList.contains('maximized')) return;
 
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        win.style.left = (e.clientX - offsetX) + 'px';
-        win.style.top = (e.clientY - offsetY) + 'px';
-    });
+    e.preventDefault();
+    isWindowDragging = true;
+    dragTargetWindow = win;
+    
+    const rect = win.getBoundingClientRect();
+    dragOffsetX = e.clientX - rect.left;
+    dragOffsetY = e.clientY - rect.top;
+});
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+document.addEventListener('mousemove', (e) => {
+    if (!isWindowDragging || !dragTargetWindow) return;
+    
+    dragTargetWindow.style.left = (e.clientX - dragOffsetX) + 'px';
+    dragTargetWindow.style.top = (e.clientY - dragOffsetY) + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+    isWindowDragging = false;
+    dragTargetWindow = null;
 });
 
 // Page Load Initialization
