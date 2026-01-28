@@ -11,8 +11,10 @@ const windowsConfig = [
 ];
 
 const iconsConfig = [
-    { label: 'Message 1', target: 'msg1', img: 'img/icon/folder.png' },
-    { label: 'Message 2', target: 'msg2', img: 'img/icon/folder.png' },
+    { label: 'My Computer', img: 'img/icon/computer.png' },
+    { label: 'Recycle Bin', img: 'img/icon/recycle.png' },
+    { label: 'Message 1', target: 'msg1', img: 'img/icon/message.png' },
+    { label: 'Message 2', target: 'msg2', img: 'img/icon/message.png' },
     { label: 'Folder 1', img: 'img/icon/folder.png' },
     { label: 'Folder 2', img: 'img/icon/folder.png' },
     { label: 'Folder 3', img: 'img/icon/folder.png' },
