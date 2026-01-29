@@ -68,8 +68,8 @@ function renderWindows() {
         minBtn.setAttribute('data-target', win.id);
         controls.appendChild(minBtn);
 
-        // Maximize button (only for photo windows)
-        if (win.type === 'photo-window') {
+        // Maximize button (ただし、photo-windowsでは無効)
+        if (win.type != 'photo-window') {
             const maxBtn = document.createElement('button');
             maxBtn.setAttribute('aria-label', 'Maximize');
             maxBtn.setAttribute('data-action', 'maximize');
@@ -120,7 +120,8 @@ function initializeWindowEventDelegation() {
                 break;
             case 'maximize':
                 maximizeWindow(target);
-                break;            case 'close':
+                break;            
+            case 'close':
                 closeWindow(target);
                 break;
             case 'help':
