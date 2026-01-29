@@ -194,9 +194,10 @@ function initializeTaskbar() {
 
         // Bind Maximize Button Dynamically
         const maxBtn = win.querySelector('button[aria-label="Maximize"]');
-        if (maxBtn) {
-            maxBtn.onclick = () => maximizeWindow(win.id);
-        }
+            maxBtn.onclick = (e) => {
+                e.stopPropagation();   // ← 追加：イベント委譲を止める
+                maximizeWindow(win.id);
+            };
     });
 }
 
@@ -321,3 +322,17 @@ function restoreWindow(id) {
 function goToPage() {
     alert('ページ移動');
 }
+
+function maximizeWindow(id) {
+    const targetWindow = document.getElementById(id);
+    if (!targetWindow) return;
+
+    console.log(targetWindow.className); // ← ここ（toggle前）
+
+    targetWindow.classList.toggle("maximized");
+
+    console.log(targetWindow.className); // ← ここ（toggle後）
+
+    focusWindow(id);
+}
+
