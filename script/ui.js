@@ -193,11 +193,11 @@ function initializeTaskbar() {
         if (titleBar) titleBar.classList.add('inactive');
 
         // Bind Maximize Button Dynamically
-        const maxBtn = win.querySelector('button[aria-label="Maximize"]');
-            maxBtn.onclick = (e) => {
-                e.stopPropagation();   // ← 追加：イベント委譲を止める
-                maximizeWindow(win.id);
-            };
+        //const maxBtn = win.querySelector('button[aria-label="Maximize"]');
+        //    maxBtn.onclick = (e) => {
+        //        e.stopPropagation();   // ← 追加：イベント委譲を止める
+        //        maximizeWindow(win.id);
+        //    };
     });
 }
 
