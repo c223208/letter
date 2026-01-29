@@ -8,7 +8,8 @@ const windowsConfig = [
     { id: 'photo5', type: 'photo-window', size: 'window-medium', title: 'Picture 5', top: 60, left: 750 },
     { id: 'msg1', type: 'message-window', title: 'まおからのメッセージ', top: 360, left: 150, content: 'message/miwa.html' },
     { id: 'msg2', type: 'message-window', title: '重要なお知らせ～みづこ', top: 410, left: 600, content: 'message/miduko.html' },
-    { id: 'msg4', type: 'message-window', title: '秘密のメッセージ', top: 510, left: 700, content: 'window/template.html' }
+    { id: 'msg4', type: 'message-window', title: '本をもとめて', top: 510, left: 700, content: 'window/mice.html' },
+    { id: 'msg5', type: 'message-window', title: 'イタリア周辺（2c BC~15c AD）', top: 100, left: 300, content: 'window/italy.html' }
 ];
 
 const iconsConfig = [
