@@ -21,6 +21,6 @@ const iconsConfig = [
     { label: 'Message 2', target: 'msg2', img: 'img/icon/message.png' },
     { label: 'Walking Human', target: 'human', img: 'img/icon/folder.png' },
     { label: 'Nyan Human', target: 'nyan_human', img: 'img/icon/folder.png' },
-    { label: 'Folder 3', img: 'img/icon/folder.png' },
-    { label: 'Folder 4', img: 'img/icon/folder.png' }
+    { label: '本をもとめて', target: 'msg4', img: 'img/icon/folder.png' },
+    { label: 'イタリア周辺', target: 'msg5', img: 'img/icon/folder.png' }
 ];
