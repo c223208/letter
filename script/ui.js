@@ -97,6 +97,20 @@ function renderWindows() {
                 .then(res => res.text())
                 .then(html => {
                     body.innerHTML = html;
+                    
+                    // IFRAME FIX: Add overlay if content contains iframe
+                    if (html.includes('<iframe')) {
+                        const overlay = document.createElement('div');
+                        overlay.className = 'window-overlay';
+                        overlay.addEventListener('mousedown', (e) => { 
+                            e.stopPropagation();
+                            focusWindow(win.id);
+                        });
+                        body.appendChild(overlay);
+                        
+                        // Ensure body is relative
+                        body.style.position = 'relative';
+                    }
         });
         }
         windowDiv.appendChild(body);
@@ -249,6 +263,7 @@ function focusWindow(id) {
     
     // Deactivate all windows first
     document.querySelectorAll('.window').forEach(w => {
+        w.classList.remove('active');
         const tb = w.querySelector('.title-bar');
         if (tb) tb.classList.add('inactive');
     });
@@ -258,6 +273,8 @@ function focusWindow(id) {
         targetWindow.style.zIndex = maxZIndex;
         activeWindowId = id;
         
+        targetWindow.classList.add('active');
+
         // Activate current window
         const currentTitleBar = targetWindow.querySelector('.title-bar');
         if (currentTitleBar) currentTitleBar.classList.remove('inactive');
@@ -321,18 +338,5 @@ function restoreWindow(id) {
 
 function goToPage() {
     alert('ページ移動');
-}
-
-function maximizeWindow(id) {
-    const targetWindow = document.getElementById(id);
-    if (!targetWindow) return;
-
-    console.log(targetWindow.className); // ← ここ（toggle前）
-
-    targetWindow.classList.toggle("maximized");
-
-    console.log(targetWindow.className); // ← ここ（toggle後）
-
-    focusWindow(id);
 }
 

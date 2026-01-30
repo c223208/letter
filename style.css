@@ -281,11 +281,47 @@ button, input, textarea, select, div, p, span, h1, h2, h3, h4, h5, h6, a, .title
     z-index: 100;
 }
 
-.title-bar-text {
-    font-size: 14px !important;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    padding-left: 4px;
+.window-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure content doesn't spill */
+}
+
+.window-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: block; /* Show by default (inactive) */
+}
+
+.window.active .window-overlay {
+    display: none; /* Hide when active */
+}
+
+.window.active .title-bar {
+    background: #000080;
+    color: #fff;
+}
+
+/* Ensure title bar indicates active state properly (existing styles might rely on .inactive class, I will align them) */
+.title-bar {
+    height: 25px; /* Fixed height for title bar */
+    background: #000080; /* Active default */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2px;
+    flex-shrink: 0;
+}
+
+.title-bar.inactive {
+    background: #808080;
+    color: #c0c0c0;
 }
 
 .photo-window .window-body {

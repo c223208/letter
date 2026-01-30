@@ -9,7 +9,9 @@ const windowsConfig = [
     { id: 'msg1', type: 'message-window', title: 'ご指導への御礼（三和）', top: 360, left: 150, content: 'message/miwa.html' },
     { id: 'msg2', type: 'message-window', title: '（木下）', top: 410, left: 600, content: 'message/miduko.html' },
     { id: 'msg4', type: 'message-window', title: '本をもとめて', top: 510, left: 700, content: 'window/mice.html' },
-    { id: 'msg5', type: 'message-window', title: 'イタリア周辺（2c BC~15c AD）', top: 100, left: 300, content: 'window/italy.html' }
+    { id: 'msg5', type: 'message-window', title: 'イタリア周辺（2c BC~15c AD）', top: 100, left: 300, content: 'window/italy.html' },
+    { id: 'human', type: 'message-window', title: 'Human', top: 150, left: 150, content: 'window/human.html' },
+    { id: 'nyan_human', type: 'message-window', title: 'Nyan Human', top: 200, left: 200, content: 'window/nyan_human.html' }
 ];
 
 const iconsConfig = [
@@ -17,8 +19,8 @@ const iconsConfig = [
     { label: 'Recycle Bin', img: 'img/icon/recycle.png' },
     { label: 'Message 1', target: 'msg1', img: 'img/icon/message.png' },
     { label: 'Message 2', target: 'msg2', img: 'img/icon/message.png' },
-    { label: 'Folder 1', img: 'img/icon/folder.png' },
-    { label: 'Folder 2', img: 'img/icon/folder.png' },
+    { label: 'Human', target: 'human', img: 'img/icon/folder.png' },
+    { label: 'Nyan Human', target: 'nyan_human', img: 'img/icon/folder.png' },
     { label: 'Folder 3', img: 'img/icon/folder.png' },
     { label: 'Folder 4', img: 'img/icon/folder.png' }
 ];
